@@ -1,9 +1,10 @@
 import { createBrowserRouter } from "react-router-dom";
+import CustomDrawer from "../components/Drawer";
 
 export const router = createBrowserRouter([
   {
     path: "/",
-    element: <div>Home</div>,
+    element: <CustomDrawer />,
   },
   {
     path: "/sales",
@@ -30,5 +31,3 @@ export const router = createBrowserRouter([
     element: <div>Alerts</div>,
   },
 ]);
-
-  
