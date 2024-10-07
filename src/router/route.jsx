@@ -1,34 +1,65 @@
-import { createBrowserRouter } from "react-router-dom";
+import { createBrowserRouter, Navigate } from "react-router-dom";
+import { Layout } from "../pages/Layout/layout";
+import { ErrorPage } from "../pages/Error/error";
+import Goals from "../pages/goals/goals";
+import Roadmap from "../pages/goals/roadmap";
+import Details from "../pages/goals/details";
+
 
 export const router = createBrowserRouter([
   {
     path: "/",
-    element: <div>Home</div>,
-  },
-  {
-    path: "/sales",
-    element: <div>Sales</div>,
-  },
-  {
-    path: "/orders",
-    element: <div>Orders</div>,
-  },
-  {
-    path: "/customers",
-    element: <div>Customers</div>,
-  },
-  {
-    path: "/items",
-    element: <div>Items</div>,
-  },
-  {
-    path: "/inventory",
-    element: <div>Inventory</div>,
-  },
-  {
-    path: "/alerts",
-    element: <div>Alerts</div>,
+    element: <Layout />,
+    errorElement: <ErrorPage />,
+    children: [
+      {
+        path: "/",
+        element: <Goals/>,
+        children: [
+          {
+            index: true, // This makes the "/" route redirect automatically
+            element: <Navigate to="roadmap" />, // Redirect to "roadmap"
+          },
+          {
+            path: "roadmap",
+            element: <Roadmap/>,
+          },
+          {
+            path: "details",
+            element: <Details/>,
+          },
+        ]
+      },
+      {
+        path: "/sales",
+        element: <div>car</div>,
+        children:[
+          {
+            index: true, // This makes the "/sales" route redirect automatically
+            element: <Navigate to="summary" />, // Redirect to "catalog"
+          },
+          
+        ]
+      },
+      {
+        path: "/customers",
+        element: <div>customers</div>,
+      },
+      {
+        path: "/items",
+        element: <div>items</div>,
+      },
+      {
+        path: "/inventory",
+        element: <div>inventory</div>,
+      },
+      {
+        path: "/alerts",
+        element: <div>alerts</div>,
+      },
+    ],
   },
 ]);
 
-  
+
+
