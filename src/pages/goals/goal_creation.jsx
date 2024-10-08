@@ -1,82 +1,56 @@
-import React, { useState } from "react";
-import { Stepper, Step, StepLabel, Paper, StepConnector } from "@mui/material";
-import { makeStyles, styled } from "@mui/material/styles";
-import { Check, CheckCircle } from "lucide-react"; // Import the CheckCircle icon from lucide
-import { Outlet } from "react-router-dom";
+import React, { useState } from 'react';
+import {
+  Stepper,
+  Step,
+  StepLabel,
+  Paper,
+  StepConnector
+} from '@mui/material';
+import { styled } from '@mui/material/styles';
+import { Outlet } from 'react-router-dom';
 
-
-
-const CustomStepIcon = styled("div")(({ theme, active, completed }) => ({
-  width: "3rem",
-  height: "3rem",
-  display: "flex",
-  alignItems: "center",
-  justifyContent: "center",
-  borderRadius: "50%",
-  backgroundColor: completed ? "#00B7A8" : active ? "#00B7A8" : "#eaeaf0", // Change color based on state
-  color: completed ? "#fff" : active ? "#fff" : "#000",
-  fontSize: "1.5rem",
+// Custom connector to adjust the alignment and thickness of the line
+const CustomStepConnector = styled(StepConnector)(({ theme }) => ({
+  '& .MuiStepConnector-line': {
+    borderColor: '#eaeaf0',
+    borderLeftWidth: '3px', // Adjust the thickness of the connector line
+    height: '3rem', // Adjust the height of the connector line
+    marginLeft: '0.6rem', // Adjust to align horizontally with the larger step icons
+  },
 }));
 
-const steps = [{ label: "" }, { label: "" }, { label: "" }, { label: "" }];
+const steps = [
+  { label: '' },
+  { label: '' },
+  { label: '' },
+  { label: '' },
+];
 
 function VerticalStepper() {
-  const [activeStep, setActiveStep] = useState(1);
+  const [activeStep, setActiveStep] = useState(0);
 
   return (
     <div className="ml-2">
       <div>
-      <Stepper
-  activeStep={activeStep}
-
-  orientation="vertical"
- 
-  sx={{
-    "& .MuiStepLabel-root .Mui-active": {
-      color: "#4CAF50", // Custom color for active step label
-    },
-    "& .MuiStepLabel-root .Mui-completed": {
-      color: "#4CAF50", // Custom color for completed step label
-    },
-    "& .MuiStepLabel-label": {
-      fontSize: "1.5rem", // Adjust the label text size
-      color: "#757575", // Inactive step label color
-    },
-    "& .MuiStepConnector-line": {
-      borderColor: "rgba(0, 183, 168, 0.5)", // Custom color for the connector line
-      borderStyle: "dotted", // Solid line for active, dotted for others
-      borderWidth: "0px 0px 0px 3px", // Right side border
-      height: "3rem",
-      marginLeft: "0.6rem",
-    },
-    "& .MuiStepConnector-root.Mui-active .MuiStepConnector-line": {
-      borderColor: "#00B7A8" , // Custom color for the connector line
-    borderStyle: "solid", // Solid line for active, dotted for others
-    borderWidth: "0px 0px 0px 2px", // Right side border
-    height: "3rem",
-    marginLeft: "0.6rem",
-    },
-
-  }}
->
-  {steps.map((step, index) => (
-    <Step key={index}>
-      <StepLabel
-        StepIconComponent={() => (
-          <CustomStepIcon
-            active={activeStep === index}
-            completed={activeStep > index}
-          >
-            {activeStep > index ? <Check /> : index + 1}
-          </CustomStepIcon>
-        )}
-      >
-        {step.label}
-      </StepLabel>
-    </Step>
-  ))}
-</Stepper>
-
+        <Stepper
+          activeStep={activeStep}
+          orientation="vertical"
+          connector={<CustomStepConnector />} // Use the custom connector
+          sx={{
+            '& .MuiStepIcon-root': {
+              fontSize: '3rem', // Increase the size of the step icon
+            },
+            '& .MuiStepLabel-label': {
+              fontSize: '1.5rem', // Adjust the label text size (if needed)
+            },
+          }}
+        >
+          {steps.map((step, index) => (
+            <Step key={index}>
+              <StepLabel>{step.label}</StepLabel>
+            </Step>
+          ))}
+        </Stepper>
         {activeStep === steps.length && (
           <Paper square elevation={0} sx={{ p: 3 }}>
             All steps completed - you're finished
@@ -97,7 +71,9 @@ function Goal_creation() {
 
       {/* Right side content */}
       <div className="bg-white flex-1 h-full">
-        <Outlet />
+
+    <Outlet/>
+
       </div>
     </div>
   );
