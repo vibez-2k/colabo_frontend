@@ -3,27 +3,17 @@ import "./drawer.css";
 
 import Phasegenerator from "./Phasegenerator/Phasegenerator";
 import Projectconfig from "./ProjectConfiguration/Projectconfig";
-
+import useStore from "../zustand/store";
 export default function CustomDrawer() {
-  const [currentscene, setcurrentscene] = useState(1);
+  const { activeStep } = useStore();
   const Scenemanagemenent = [
     {
-      id: 1,
-      element: (
-        <Projectconfig
-          currentscene={currentscene}
-          setcurrentscene={setcurrentscene}
-        />
-      ),
+      id: 0,
+      element: <Projectconfig />,
     },
     {
-      id: 2,
-      element: (
-        <Phasegenerator
-          currentscene={currentscene}
-          setcurrentscene={setcurrentscene}
-        />
-      ),
+      id: 1,
+      element: <Phasegenerator />,
     },
   ];
 
@@ -116,7 +106,7 @@ export default function CustomDrawer() {
 
           <div className="w-[91%] flex-col Phases_items_container">
             {Scenemanagemenent.map((val) => {
-              if (val.id == currentscene) {
+              if (val.id == activeStep) {
                 console.log(val.id);
                 return val.element;
               }

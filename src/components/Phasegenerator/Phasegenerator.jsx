@@ -2,7 +2,21 @@ import React from "react";
 import { RiDeleteBin6Line } from "react-icons/ri";
 import { FaCircleCheck } from "react-icons/fa6";
 import "./Phasegenerator.css";
+import useStore from "../../zustand/store";
 const Phasegenerator = ({ setcurrentscene, currentscene }) => {
+  const {
+    setupworkflow,
+    projectintophase,
+    setprojectintophase,
+    setworkflowbool,
+    activeStep,
+    incrementStep,
+    decrementStep,
+    sameworkflow,
+    setsameworkflow,
+    phases,
+    addPhases,
+  } = useStore();
   return (
     <>
       {" "}
@@ -24,6 +38,8 @@ const Phasegenerator = ({ setcurrentscene, currentscene }) => {
           /> */}
           <input
             type="checkbox"
+            defaultChecked={sameworkflow}
+            onChange={(e) => sameworkflow(e.target.checked)}
             className="toggle bg-white border-[#C6C6C6] peer [--tglbg:#C6C6C6] checked:bg-white checked:[--tglbg:#00B7A8]"
           />
         </div>
@@ -38,16 +54,26 @@ const Phasegenerator = ({ setcurrentscene, currentscene }) => {
             placeholder="Type your phases here..."
             className="input  w-full  bg-white pr-16 outline-0 border-0" // add padding for text
           />
-          <span className="absolute right-4 top-1/2 transform -translate-y-1/2 ">
+          <span
+            className="absolute right-4 top-1/2 transform -translate-y-1/2 "
+            // onClick={() => addPhases({ id: phases.length + 1,
+            //   name:
+            //  })}
+          >
             ADD
           </span>
         </div>
         <div className="btn-block invitemembers">
           <div className="">
-            <div className="flex align-middle justify-between invitemembers_body">
-              <h2 className="text-black m-0">P1</h2>
-              <RiDeleteBin6Line className="cursor-pointer" size={20} />
-            </div>
+            {phases?.map((val, i) => {
+              return (
+                <div className="flex align-middle justify-between invitemembers_body">
+                  <h2 className="text-black m-0">{val.name}</h2>
+                  <RiDeleteBin6Line className="cursor-pointer" size={20} />
+                </div>
+              );
+            })}
+
             <div className="mycustombtngrp">
               <button className="btn bg-white text-[#00B7A8] mycustombtn">
                 <FaCircleCheck />
@@ -71,7 +97,7 @@ const Phasegenerator = ({ setcurrentscene, currentscene }) => {
         <div className="bottom-btngrp">
           <button
             className="btn bg-white text-black flex-1 hover:bg-white border-[#EDF0F3] border-2 hover:border-[#EDF0F3]"
-            onClick={() => setcurrentscene(currentscene - 1)}
+            onClick={() => decrementStep(activeStep)}
           >
             Go Back
           </button>

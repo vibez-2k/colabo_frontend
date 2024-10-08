@@ -3,10 +3,17 @@ import "./Projectconfig.css";
 import { RiDeleteBin6Line } from "react-icons/ri";
 import { FaCircleCheck } from "react-icons/fa6";
 import Radio from "@mui/material/Radio";
-const Projectconfig = ({ setcurrentscene, currentscene }) => {
-  const [breakproject, setbreakproject] = React.useState("a");
-  const [workflow, setbreakpworkflow] = React.useState("a");
-
+import useStore from "../../zustand/store";
+const Projectconfig = () => {
+  const {
+    setupworkflow,
+    projectintophase,
+    setprojectintophase,
+    setworkflowbool,
+    activeStep,
+    incrementStep,
+    decrementStep,
+  } = useStore();
   const handleChange = (value) => {
     setbreakproject(value);
   };
@@ -30,13 +37,12 @@ const Projectconfig = ({ setcurrentscene, currentscene }) => {
           <div className="flex gap-4 phasebuttongrp">
             <button
               className="flex-1 btn bg-white border border-[#EDF0F3] text-black px-4 py-2  space-x-2 hover:bg-white hover:border-[#00B7A8] radiobuttonsel"
-              onClick={() => handleChange("a")}
-              style={breakproject === "a" ? { borderColor: "#00B7A8" } : {}}
+              onClick={() => setprojectintophase(true)}
+              style={projectintophase ? { borderColor: "#00B7A8" } : {}}
             >
               <Radio
-                checked={breakproject === "a"}
-                onChange={(e) => handleChange(e.target.value)}
-                value="a"
+                checked={projectintophase}
+                onChange={(e) => setprojectintophase(true)}
                 name="radio-buttons"
                 inputProps={{ "aria-label": "A" }}
                 sx={{
@@ -54,13 +60,16 @@ const Projectconfig = ({ setcurrentscene, currentscene }) => {
             </button>
             <button
               className="flex-1 btn bg-white border border-[#EDF0F3] text-black px-4 py-2  space-x-2 hover:bg-white hover:border-[#00B7A8] radiobuttonsel"
-              onClick={() => handleChange("b")}
-              style={breakproject === "b" ? { borderColor: "#00B7A8" } : {}}
+              onClick={() => setprojectintophase(false)}
+              style={
+                projectintophase != null && !projectintophase
+                  ? { borderColor: "#00B7A8" }
+                  : {}
+              }
             >
               <Radio
-                checked={breakproject === "b"}
-                onChange={(e) => handleChange(e.target.value)}
-                value="b"
+                checked={projectintophase != null && !projectintophase}
+                onChange={(e) => setprojectintophase(false)}
                 name="radio-buttons"
                 inputProps={{ "aria-label": "B" }}
                 sx={{
@@ -87,12 +96,12 @@ const Projectconfig = ({ setcurrentscene, currentscene }) => {
           <div className="flex gap-4 phasebuttongrp">
             <button
               className="flex-1 btn bg-white border border-[#EDF0F3] text-black px-4 py-2  space-x-2 hover:bg-white hover:border-[#00B7A8] radiobuttonsel"
-              onClick={() => handleworkflow("a")}
-              style={workflow === "a" ? { borderColor: "#00B7A8" } : {}}
+              onClick={() => setworkflowbool(true)}
+              style={setupworkflow ? { borderColor: "#00B7A8" } : {}}
             >
               <Radio
-                checked={workflow === "a"}
-                onChange={(e) => handleworkflow(e.target.value)}
+                checked={setupworkflow}
+                onChange={(e) => setworkflowbool(true)}
                 value="a"
                 name="radio-buttons"
                 inputProps={{ "aria-label": "A" }}
@@ -111,12 +120,16 @@ const Projectconfig = ({ setcurrentscene, currentscene }) => {
             </button>
             <button
               className="flex-1 btn bg-white border border-[#EDF0F3] text-black px-4 py-2  space-x-2 hover:bg-white hover:border-[#00B7A8] radiobuttonsel"
-              onClick={() => handleworkflow("b")}
-              style={workflow === "b" ? { borderColor: "#00B7A8" } : {}}
+              onClick={() => setworkflowbool(false)}
+              style={
+                setupworkflow !== null && !setupworkflow
+                  ? { borderColor: "#00B7A8" }
+                  : {}
+              }
             >
               <Radio
-                checked={workflow === "b"}
-                onChange={(e) => handleworkflow(e.target.value)}
+                checked={setupworkflow !== null && !setupworkflow}
+                onChange={(e) => setworkflowbool(false)}
                 value="b"
                 name="radio-buttons"
                 inputProps={{ "aria-label": "B" }}
@@ -154,7 +167,7 @@ const Projectconfig = ({ setcurrentscene, currentscene }) => {
           </button>
           <button
             className="btn text-white bg-[#00B7A8] flex-1 hover:bg-[#00B7A8] border-0 hover:border-0"
-            onClick={() => setcurrentscene(currentscene + 1)}
+            onClick={() => incrementStep(activeStep)}
           >
             Continue
           </button>
