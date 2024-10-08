@@ -1,3 +1,4 @@
+
 import { createBrowserRouter, Navigate } from "react-router-dom";
 import { Layout } from "../pages/Layout/layout";
 import { ErrorPage } from "../pages/Error/error";
@@ -5,10 +6,10 @@ import Goals from "../pages/goals/goals";
 import Roadmap from "../pages/goals/roadmap";
 import Details from "../pages/goals/details";
 
-
 export const router = createBrowserRouter([
   {
     path: "/",
+
     element: <Layout />,
     errorElement: <ErrorPage />,
     children: [
@@ -60,6 +61,4 @@ export const router = createBrowserRouter([
     ],
   },
 ]);
-
-
 

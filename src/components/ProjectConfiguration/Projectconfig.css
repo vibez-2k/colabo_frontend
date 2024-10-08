@@ -1,0 +1,107 @@
+.projectconfig {
+    .breakphase {
+
+        margin-top: 7%;
+        /* padding: 0px 10px; */
+        color: black;
+    }
+
+
+
+
+    .mycustombtngrp {
+        margin-top: 5%;
+        display: flex;
+        flex-direction: row;
+        justify-content: space-evenly;
+    }
+
+    .mycustombtn {
+        border: 2px solid #EDF0F3 !important;
+        padding-right: 30px !important;
+    }
+
+    .mycustombtn:hover {
+        background-color: #00B7A8 !important;
+        color: white !important;
+
+        .mycustomstatus span {
+            color: white !important;
+            border-color: white !important;
+        }
+    }
+
+
+
+    .phaseitembody {
+        padding-left: 20px;
+        padding-right: 20px;
+    }
+
+
+    .radiobuttonsel {
+        flex-wrap: nowrap !important;
+        justify-content: start !important;
+        gap: 0rem !important;
+        /* gap: 2px; */
+    }
+
+    .phasebuttongrp {
+        margin-top: 4%;
+    }
+
+    .dotted-hr {
+        border: none;
+        /* Remove the default border */
+        border-top: 1px dashed #EDF0F3;
+        /* Set a dotted top border */
+        height: 0;
+        /* Ensure height is zero */
+        margin: 10px 0;
+        margin-top: 4%;
+        /* Add some vertical space */
+    }
+
+    .workflowphase {
+        margin-top: 4%;
+        /* padding: 0px 10px; */
+        color: black;
+    }
+
+    .setupworkflow {
+        padding: 0px 10px;
+        margin-top: 3%;
+        height: 40%;
+        /* height: 64%; */
+        border: 2px solid #F5FCFC;
+        border-radius: var(--rounded-btn, 0.5rem);
+        /* background-image: url("/workflowbg.png");
+    background-repeat: no-repeat;
+    background-size: cover; */
+        background-color: #F5FCFC;
+    }
+
+    .setupworkflowbtn {
+        padding-left: 20px !important;
+        padding-right: 20px !important;
+        border: none !important;
+
+    }
+}
+
+.bottom_container {
+    border-top: 2px solid #EDF0F3;
+    padding-top: 1%;
+    padding-left: 20px;
+    padding-right: 20px;
+    padding-bottom: 1%;
+}
+
+.bottom-btngrp {
+
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    gap: 20px;
+
+}

@@ -1,0 +1,40 @@
+.steps .step::after,
+.steps .step::before {
+    background-color: #00B7A8 !important;
+    color: white !important
+}
+
+.steps .step::before {
+    width: 0.2rem !important;
+    height: 90px !important;
+    /* margin: 0.01rem 0px; */
+}
+
+.steps .step::after {
+    width: 2.7rem !important;
+    height: 2.7rem !important;
+    /* width: 100%; */
+}
+
+.Phases_items_container {
+    margin-top: 4%;
+
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+
+}
+
+.overlaybutton {
+    position: absolute;
+    left: 47.4% !important;
+    margin-top: 10px;
+    background-color: #fff !important;
+    border: none;
+    color: black !important;
+}
+
+html:has(.drawer-toggle:checked) {
+    overflow-y: hidden;
+    scrollbar-gutter: auto !important;
+}
