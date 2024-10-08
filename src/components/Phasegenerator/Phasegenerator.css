@@ -33,14 +33,19 @@
 
     .invitemembers {
         margin-top: 4%;
-        height: 36%;
+        min-height: 36%;
         background-color: #F5F7F8;
         border: 2px solid #EDF0F3;
         border-radius: var(--rounded-btn, 0.5rem);
         padding: 0px 10px;
 
 
+    }
 
+    .invitememberselement {
+        display: flex;
+        flex-direction: column;
+        justify-content: space-between;
     }
 
     .invitemembers_body {
@@ -52,11 +57,13 @@
 
     .mycustombtngrp {
         /* border: 2px solid black; */
-        margin-top: 5%;
+        /* margin-top: 5%; */
         display: inline-flex;
         flex-direction: row;
         width: 100%;
         justify-content: space-between;
+        margin-bottom: 10px;
+        margin-top: 10px;
 
     }
 

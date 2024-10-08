@@ -20,7 +20,7 @@ const useStore = create((set, get) => ({
     projectintophase: null,
     setupworkflow: null,
     sameworkflow: false,
-    phases: null,
+    phases: [],
 
     fetchRoadmap: async () => {
         const response = await fetch('localhost:8080/api/v1/getroadmap');

@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useRef } from "react";
 import { RiDeleteBin6Line } from "react-icons/ri";
 import { FaCircleCheck } from "react-icons/fa6";
 import "./Phasegenerator.css";
@@ -16,7 +16,9 @@ const Phasegenerator = ({ setcurrentscene, currentscene }) => {
     setsameworkflow,
     phases,
     addPhases,
+    removePhase,
   } = useStore();
+  const inputref = useRef(null);
   return (
     <>
       {" "}
@@ -51,25 +53,36 @@ const Phasegenerator = ({ setcurrentscene, currentscene }) => {
         <div className="relative w-full phaseinput ">
           <input
             type="text"
+            ref={inputref}
             placeholder="Type your phases here..."
             className="input  w-full  bg-white pr-16 outline-0 border-0" // add padding for text
           />
           <span
-            className="absolute right-4 top-1/2 transform -translate-y-1/2 "
-            // onClick={() => addPhases({ id: phases.length + 1,
-            //   name:
-            //  })}
+            className="absolute right-4 top-1/2 transform -translate-y-1/2 z-10 cursor-pointer"
+            onClick={() => {
+              console.log("hello");
+              addPhases({
+                id: phases ? phases.length + 1 : 0,
+                name: inputref.current.value,
+              });
+              inputref.current.value = "";
+            }}
           >
             ADD
           </span>
         </div>
+        {console.log(phases)}
         <div className="btn-block invitemembers">
-          <div className="">
+          <div className="invitememberselement">
             {phases?.map((val, i) => {
               return (
                 <div className="flex align-middle justify-between invitemembers_body">
                   <h2 className="text-black m-0">{val.name}</h2>
-                  <RiDeleteBin6Line className="cursor-pointer" size={20} />
+                  <RiDeleteBin6Line
+                    className="cursor-pointer"
+                    size={20}
+                    onClick={() => removePhase(val.id)}
+                  />
                 </div>
               );
             })}
