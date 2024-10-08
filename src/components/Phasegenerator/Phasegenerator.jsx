@@ -2,11 +2,11 @@ import React from "react";
 import { RiDeleteBin6Line } from "react-icons/ri";
 import { FaCircleCheck } from "react-icons/fa6";
 import "./Phasegenerator.css";
-const Phasegenerator = () => {
+const Phasegenerator = ({ setcurrentscene, currentscene }) => {
   return (
     <>
       {" "}
-      <div className="phaseitembody">
+      <div className="phaseitembody phasegenerator">
         <h1
           className="text-black font-bold text-xl
 "
@@ -18,9 +18,13 @@ const Phasegenerator = () => {
             Use the same workflow for project and phases
           </h2>
 
-          <input
+          {/* <input
             type="checkbox"
             className="toggle border-#C6C6C6 bg-white [--tglbg:#C6C6C6] hover:bg-white"
+          /> */}
+          <input
+            type="checkbox"
+            className="toggle bg-white border-[#C6C6C6] peer [--tglbg:#C6C6C6] checked:bg-white checked:[--tglbg:#00B7A8]"
           />
         </div>
         {/* <input
@@ -42,7 +46,7 @@ const Phasegenerator = () => {
           <div className="">
             <div className="flex align-middle justify-between invitemembers_body">
               <h2 className="text-black m-0">P1</h2>
-              <RiDeleteBin6Line size={20} />
+              <RiDeleteBin6Line className="cursor-pointer" size={20} />
             </div>
             <div className="mycustombtngrp">
               <button className="btn bg-white text-[#00B7A8] mycustombtn">
@@ -65,7 +69,10 @@ const Phasegenerator = () => {
       </div>
       <div className="bottom_container">
         <div className="bottom-btngrp">
-          <button className="btn bg-white text-black flex-1 hover:bg-white border-[#EDF0F3] border-2 hover:border-[#EDF0F3]">
+          <button
+            className="btn bg-white text-black flex-1 hover:bg-white border-[#EDF0F3] border-2 hover:border-[#EDF0F3]"
+            onClick={() => setcurrentscene(currentscene - 1)}
+          >
             Go Back
           </button>
           <button className="btn text-white bg-[#00B7A8] flex-1 hover:bg-[#00B7A8] border-0 hover:border-0">

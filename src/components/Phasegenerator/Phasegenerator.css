@@ -1,69 +1,93 @@
-.workflow {
-    border-radius: var(--rounded-btn, 0.5rem);
-    height: 3rem;
-    width: 100%;
-    border: 2px solid #EDF0F3;
-    display: flex;
-    flex-direction: row;
-    justify-content: space-between;
-    align-items: center;
-    color: black;
-    margin-top: 6%;
-    background-color: #F9FAFB;
-    padding: 0px 10px;
-    color: black;
-}
+.phasegenerator {
 
-.phaseinput {
-    background-color: #FFFFFF;
-    margin-top: 9%;
-    color: #BFBFBF;
-    border: 2px solid #EDF0F3;
-    border-radius: var(--rounded-btn, 0.5rem);
 
-}
-
-.phaseinput input {
-    outline: none;
-    border: none;
-}
-
-.invitemembers {
-    margin-top: 4%;
-    height: 36%;
-    background-color: #F5F7F8;
-    border: 2px solid #EDF0F3;
-    border-radius: var(--rounded-btn, 0.5rem);
-    padding: 0px 10px;
-
-}
-
-.invitemembers_body {
-    margin-top: 2%;
-    padding-left: 2%;
-    padding-right: 5%;
-}
-
-.mycustombtngrp {
-    margin-top: 5%;
-    display: flex;
-    flex-direction: row;
-    justify-content: space-evenly;
-}
-
-.mycustombtn {
-    border: 2px solid #EDF0F3 !important;
-    padding-right: 30px !important;
-}
-
-.mycustombtn:hover {
-    background-color: #00B7A8 !important;
-    color: white !important;
-
-    .mycustomstatus span {
-        color: white !important;
-        border-color: white !important;
+    .workflow {
+        border-radius: var(--rounded-btn, 0.5rem);
+        height: 3rem;
+        width: 100%;
+        border: 2px solid #EDF0F3;
+        display: flex;
+        flex-direction: row;
+        justify-content: space-between;
+        align-items: center;
+        color: black;
+        margin-top: 6%;
+        background-color: #F9FAFB;
+        padding: 0px 10px;
+        color: black;
     }
+
+    .phaseinput {
+        background-color: #FFFFFF;
+        margin-top: 9%;
+        color: #BFBFBF;
+        border: 2px solid #EDF0F3;
+        border-radius: var(--rounded-btn, 0.5rem);
+
+    }
+
+    .phaseinput input {
+        outline: none;
+        border: none;
+    }
+
+    .invitemembers {
+        margin-top: 4%;
+        height: 36%;
+        background-color: #F5F7F8;
+        border: 2px solid #EDF0F3;
+        border-radius: var(--rounded-btn, 0.5rem);
+        padding: 0px 10px;
+
+
+
+    }
+
+    .invitemembers_body {
+        margin-top: 2%;
+        padding-left: 1%;
+        padding-right: 3%;
+        /* border: 2px solid black; */
+    }
+
+    .mycustombtngrp {
+        /* border: 2px solid black; */
+        margin-top: 5%;
+        display: inline-flex;
+        flex-direction: row;
+        width: 100%;
+        justify-content: space-between;
+
+    }
+
+    .mycustombtn {
+        border: 2px solid #EDF0F3 !important;
+        padding-right: 10px !important;
+    }
+
+    .mycustombtn:hover {
+        background-color: #00B7A8 !important;
+        color: white !important;
+
+        .mycustomstatus {
+            border-color: white !important;
+        }
+
+        .mycustomstatus span {
+
+            color: rgb(255, 255, 255) !important;
+
+        }
+    }
+
+
+
+
+}
+
+.phaseitembody {
+    padding-left: 20px;
+    padding-right: 20px;
 }
 
 .bottom_container {
@@ -72,11 +96,6 @@
     padding-left: 20px;
     padding-right: 20px;
     padding-bottom: 1%;
-}
-
-.phaseitembody {
-    padding-left: 20px;
-    padding-right: 20px;
 }
 
 .bottom-btngrp {
