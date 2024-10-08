@@ -42,7 +42,7 @@ export default function CustomDrawer() {
         {/* Page content here */}
         <label
           htmlFor="my-drawer"
-          className="btn btn-primary drawer-button"
+          className="btn btn-info drawer-button text-black bg-blue-700"
           onClick={openDrawer}
         >
           Open drawer
