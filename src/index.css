@@ -4,13 +4,18 @@
 
 
 .scrollbarHide::-webkit-scrollbar {
-    display: none; /* Hides the scrollbar in WebKit-based browsers (Chrome, Safari) */
-  }
-  
-  .scrollbarHide {
-    -ms-overflow-style: none;  /* Hides scrollbar in Internet Explorer and Edge */
-    scrollbar-width: none;     /* Hides scrollbar in Firefox */
-  }
-  
+  display: none;
+  /* Hides the scrollbar in WebKit-based browsers (Chrome, Safari) */
+}
 
-  
+.scrollbarHide {
+  -ms-overflow-style: none;
+  /* Hides scrollbar in Internet Explorer and Edge */
+  scrollbar-width: none;
+  /* Hides scrollbar in Firefox */
+}
+
+html:has(.drawer-toggle:checked) {
+  overflow-y: hidden;
+  scrollbar-gutter: auto !important;
+}
